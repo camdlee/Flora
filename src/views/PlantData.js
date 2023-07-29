@@ -2,8 +2,8 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 
 
-export default function Home() {
-    console.log('home page')
+export default function PlantData() {
+
     // --------------- Initializing variables ----------
     const apiUrl = `https://perenual.com/api/species-list?page=1&key=sk-NXut64b9f2491050e1633`
     const [plants, setPlants] = useState([])
@@ -19,34 +19,24 @@ export default function Home() {
         .then(response => response.json())
         // set state of plants with data pulled from api
         .then(data=>{
-            console.log(data)
-            setPlants(data.results)
+            console.log(data['data'])
+            // setPlants(data['data'])
         })
     },)
+
 
     return(
         <>
         <body>
             <div className='home-container'>
-                <h1>This is the home page</h1>
+                <h1>This is the plant data page</h1>
             </div>
-            <div className='container'>
-                <h1>Secondary Color</h1>
-            </div>
-            <div className='container4'>
-                <h1>Tertiary Color</h1>
-            </div>
-            <div className='container1'>
-                <h1>Accent Color</h1>
-            </div>
-            <div className='container2'>
-                <h1>Accent Color 2</h1>
-            </div>
-            <div className='container5'>
-                <h1>Accent Color 3</h1>
-            </div>
-            <div className='container3'>
-                <h1>Contrast Color</h1>
+            <div>
+                {/* {plants.map((data)=>{
+                    return(
+                        <p>{data.data}</p>
+                    )
+                })} */}
             </div>
         </body>
         </>

@@ -9,7 +9,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 export default function NavbarScroll() {
 
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="tertiary-color">
           <Container fluid>
             <Navbar.Brand href="/">Home</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
@@ -21,7 +21,8 @@ export default function NavbarScroll() {
               >
                 <Nav.Link href="/signup">Sign Up</Nav.Link>
                 <Nav.Link href="/signin">Sign In</Nav.Link>
-                <NavDropdown title="Link" id="navbarScrollingDropdown">
+                <Nav.Link href='/plantdata'>Plant Data</Nav.Link>
+                <NavDropdown title="Link" className='tertiary-color'id="navbarScrollingDropdown">
                   <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action4">
                     Another action
@@ -31,9 +32,9 @@ export default function NavbarScroll() {
                     Something else here
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="#" disabled>
+                {/* <Nav.Link href="#" disabled>
                   Link
-                </Nav.Link>
+                </Nav.Link> */}
               </Nav>
               <Form className="d-flex">
                 <Form.Control
