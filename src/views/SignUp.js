@@ -13,6 +13,10 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth, db } from '../firebase';
+import { doc, setDoc } from 'firebase/firestore';
+
 
 
 const defaultTheme = createTheme();
@@ -36,6 +40,30 @@ export default function SignUp() {
   };
 
   // console.log(email);
+
+  // ------------ Function to sign up new users -------------
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // signed in
+      const user = userCredential.user;
+      console.log(user)
+      updateProfile(user, {
+        displayName: name
+      })
+
+      const data = {
+        uid: user.uid,
+        email: user.email,
+      }
+      console.log(data)
+      setUser(data)
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    })
+
+
 
   return (
     <ThemeProvider theme={defaultTheme}>
