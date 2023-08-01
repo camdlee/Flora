@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,6 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -28,6 +29,7 @@ export default function SignUp() {
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
   const [user, setUser] = useState({})
+  const navigate = useNavigate()
 
   // ------------ Function to track input from user -------------
   const handleSubmit = (event) => {
@@ -73,11 +75,14 @@ export default function SignUp() {
         uid: user.uid,
         email: user.email
       })
+      navigate('/')
     }
     if(Object.keys(user).length > 0) {
       addUserToFirebase()
     }
   }, [user])
+
+
 
   return (
     <ThemeProvider theme={defaultTheme}>
