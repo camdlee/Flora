@@ -63,7 +63,21 @@ export default function SignUp() {
       const errorMessage = error.message;
     })
 
-
+  
+  // ---------- useEffect hook to mount to page --------------
+  useEffect(() => {
+    // function to upload user to firebase
+    const addUserToFirebase = async () => {
+      console.log(user)
+      await setDoc(doc(db,'user', user.uid), {
+        uid: user.uid,
+        email: user.email
+      })
+    }
+    if(Object.keys(user).length > 0) {
+      addUserToFirebase()
+    }
+  }, [user])
 
   return (
     <ThemeProvider theme={defaultTheme}>
