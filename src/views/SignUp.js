@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -18,7 +19,13 @@ const defaultTheme = createTheme();
 
 export default function SignUp() {
 
+  // ----------- Variables & hooks -------------
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [name, setName] = useState('')
+  const [user, setUser] = useState({})
 
+  // ------------ Function to track input from user -------------
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -27,6 +34,8 @@ export default function SignUp() {
       password: data.get('password'),
     });
   };
+
+  // console.log(email);
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -57,6 +66,7 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={(event)=> {setName(event.target.value)}}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -77,6 +87,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(event) => {setEmail(event.target.value)}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -88,6 +99,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={(event) => {setPassword(event.target.value)}}
                 />
               </Grid>
               {/* <Grid item xs={12}>

@@ -62,11 +62,11 @@ export default function PlantData() {
                 })}
             </div> */}
 
-            <div>
+            {/* <div>
                 {plantInfo.map(plant => {
                     return <pre>{JSON.stringify(plantInfo)}</pre>
                 })}
-            </div>
+            </div> */}
 
 
 
