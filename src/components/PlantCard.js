@@ -9,6 +9,9 @@ import Typography from '@mui/material/Typography';
 
 
 export default function PlantCard({key, name, other_name, cycle, image, scientific_name, sunlight, watering}) {
+  
+  const apiPremiumError = "Upgrade Plans To Premium/Supreme - https://perenual.com/subscription-api-pricing. I'm sorry"
+  
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -27,13 +30,13 @@ export default function PlantCard({key, name, other_name, cycle, image, scientif
           {other_name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-            {cycle}
+            Cycle: {cycle}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-            {sunlight}
+            Sunlight: {sunlight}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-            {watering}
+            Water: {watering}
         </Typography>
       </CardContent>
       {/* <CardActions>
