@@ -6,6 +6,7 @@ import NavbarScroll from './components/Nav';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import PlantData from './views/PlantData';
+import PlantSearch from './views/PlantSearch'
 
 export default function App() {
 
@@ -17,6 +18,7 @@ export default function App() {
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/plantdata' element={<PlantData/>}/>
+        <Route path='/plantsearch' element={<PlantSearch/>}/>
       </Routes>
     </BrowserRouter>
   )

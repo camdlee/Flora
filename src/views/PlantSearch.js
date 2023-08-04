@@ -1,6 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import PlantCard from '../components/PlantCard';
+import Form from 'react-bootstrap/Form';
+// import { Button } from 'bootstrap';
+import Button from '@mui/material/Button'
 
 export default function PlantData() {
 
@@ -8,6 +11,8 @@ export default function PlantData() {
     // Hooks
     const [plantData, setPlantData] = useState([])
     const [plant, setPlant] = useState('')
+    const [searchedPlant, setSearchedPlant] = useState('')
+    const [searchResults, setSearchResults] = useState([])
     // const [plantInfo, setPlantInfo] = useState('')
 
 
@@ -21,58 +26,40 @@ export default function PlantData() {
 
     // Plant Details url - produces the specific info for a particular plant
     // Need ID and Key for url to get info
-    const plantDetailsUrl=`https://perenual.com/api/species/details/1?key=sk-NXut64b9f2491050e1633`
+    // const plantDetailsUrl=`https://perenual.com/api/species/details/1?key=sk-NXut64b9f2491050e1633`
 
+    
     useEffect(() => {
-        fetch(plantDetailsUrl)
+        fetch(`https://perenual.com/api/species-list?page=1&key=sk-NXut64b9f2491050e1633&q=${searchedPlant}`)
         .then(response => response.json())
         .then(data=>{
             console.log(data)
+            setSearchResults(data.data)
         })
-    },[])
-
-
-    // ---------------- useEffect hook to fetch plant data --------------------
-    useEffect(() => {
-        // console.log('useEffect hook to fetch api data')
-        // fetching data from api
-        fetch(apiUrl)
-        // waiting for response
-        .then(response => response.json())
-        // set state of plants with data pulled from api
-        .then(data=>{
-            console.log(data.data)
-            setPlantData(data.data)
-        })
-    },[])
-
-    // console.log(plantData[0].default_image.original_url)
+    },[searchedPlant])
+    
 
     return(
         <>
         <body>
-            <div className='home-container'>
-                <h1>This is the plant data page</h1>
-            </div>
+            <section className='home-container'>
+                <h1>This is the plant search page</h1>
+            </section>
 
-            {/* Mapping out plant list data raw */}
-            {/* <div>
-                {plantData.map(plant => {
-                    return <pre>{JSON.stringify(plant)}</pre>
-                })}
-            </div> */}
-
-            {/* <div>
-                {plantInfo.map(plant => {
-                    return <pre>{JSON.stringify(plantInfo)}</pre>
-                })}
-            </div> */}
-
-
+            {/* ------------------ INPUT SEARCH BAR ----------------- */}
+            <section>
+                <Form.Control 
+                type="text" 
+                placeholder="Plant Name"
+                id='search-bar'
+                onChange={(event) => {setSearchedPlant(event.target.value)}}
+                />
+            </section>
 
             {/* ------------------- Plant Card Section ----------------------- */}
-            <div>
-                {plantData.map(plant => {
+
+            <section>
+                {searchResults.map(plant => {
                     return(
                         <PlantCard
                         key={plant.id}
@@ -85,9 +72,8 @@ export default function PlantData() {
                         watering={plant.watering}
                         />
                     )
-                })
-                }
-            </div>
+                })}
+            </section>
 
         </body>
         </>
