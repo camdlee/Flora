@@ -4,6 +4,7 @@ import PlantCard from '../components/PlantCard';
 import Form from 'react-bootstrap/Form';
 // import { Button } from 'bootstrap';
 import Button from '@mui/material/Button'
+import DummyCard from '../components/DummyCard';
 
 export default function PlantData() {
 
@@ -42,23 +43,33 @@ export default function PlantData() {
     return(
         <>
         <body>
-            <section className='home-container'>
+            {/* <section className='home-container'>
                 <h1>This is the plant search page</h1>
-            </section>
+            </section> */}
 
             {/* ------------------ INPUT SEARCH BAR ----------------- */}
-            <section>
+            <section className="search-header">
+                <h2>Plant Finder</h2>
                 <Form.Control 
                 type="text" 
-                placeholder="Plant Name"
+                placeholder="Search for a Plant"
                 id='search-bar'
+                className='searchbar'
                 onChange={(event) => {setSearchedPlant(event.target.value)}}
                 />
             </section>
 
             {/* ------------------- Plant Card Section ----------------------- */}
 
-            <section>
+            <section className='results-container'>
+                {/* <DummyCard/>
+                <DummyCard/>
+                <DummyCard/>
+                <DummyCard/>
+                <DummyCard/>
+                <DummyCard/>
+                <DummyCard/>
+                <DummyCard/> */}
                 {searchResults.map(plant => {
                     return(
                         <PlantCard

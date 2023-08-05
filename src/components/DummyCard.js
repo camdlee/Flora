@@ -8,41 +8,31 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 
-export default function PlantCard({key, name, other_name, cycle, image, scientific_name, sunlight, watering}) {
-  
-  const apiPremiumError = "Upgrade Plans To Premium/Supreme - https://perenual.com/subscription-api-pricing. I'm sorry"
+export default function DummyCard() {
   
   return (
     <Card className='card'>
       <CardMedia
         sx={{ height: 140 }}
         image="/static/images/cards/contemplative-reptile.jpg"
-        title={name}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {name}
+          Name
         </Typography>
         <Typography gutterBottom variant="h6" component="div">
-          {scientific_name}
-        </Typography>
-        <Typography gutterBottom variant="h6" component="div">
-          {other_name}
+          Text
         </Typography>
         <Typography variant="body2" color="text.secondary">
-            Cycle: {cycle}
+            Cycle:
         </Typography>
         <Typography variant="body2" color="text.secondary">
-            Sunlight: {sunlight}
+            Sunlight:
         </Typography>
         <Typography variant="body2" color="text.secondary">
-            Water: {watering}
+            Water:
         </Typography>
       </CardContent>
-      {/* <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions> */}
     </Card>
   );
 }

@@ -99,7 +99,47 @@ body{
   background-color: #F2debb;
 }
 
+
 /* -------------- Nav ------------ */
 Nav{
   font-weight: bold;
+}
+
+
+/* ------------- PlantSearch ---------- */
+.search-header{
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchbar{
+  width: 75vw;
+}
+
+.results-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 2% 0 0;
+  /* background-repeat: no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  isolation: isolate; */
+}
+
+.card{
+  height: 50vh;
+  width: 40vh;
+  min-Width: 200px;
+  margin: 2%;
+  border: solid gray 1px;
 }
