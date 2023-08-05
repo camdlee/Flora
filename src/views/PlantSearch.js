@@ -30,14 +30,14 @@ export default function PlantData() {
     // const plantDetailsUrl=`https://perenual.com/api/species/details/1?key=sk-NXut64b9f2491050e1633`
 
     
-    useEffect(() => {
-        fetch(`https://perenual.com/api/species-list?page=1&key=sk-NXut64b9f2491050e1633&q=${searchedPlant}`)
-        .then(response => response.json())
-        .then(data=>{
-            console.log(data)
-            setSearchResults(data.data)
-        })
-    },[searchedPlant])
+    // useEffect(() => {
+    //     fetch(`https://perenual.com/api/species-list?page=1&key=sk-NXut64b9f2491050e1633&q=${searchedPlant}`)
+    //     .then(response => response.json())
+    //     .then(data=>{
+    //         console.log(data)
+    //         setSearchResults(data.data)
+    //     })
+    // },[searchedPlant])
     
 
     return(
@@ -57,19 +57,21 @@ export default function PlantData() {
                 className='searchbar'
                 onChange={(event) => {setSearchedPlant(event.target.value)}}
                 />
+            <button>Search</button>
             </section>
 
             {/* ------------------- Plant Card Section ----------------------- */}
 
             <section className='results-container'>
-                {/* <DummyCard/>
                 <DummyCard/>
                 <DummyCard/>
                 <DummyCard/>
                 <DummyCard/>
                 <DummyCard/>
                 <DummyCard/>
-                <DummyCard/> */}
+                <DummyCard/>
+                <DummyCard/>
+                <DummyCard/>
                 {searchResults.map(plant => {
                     return(
                         <PlantCard

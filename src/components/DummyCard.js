@@ -10,11 +10,13 @@ import Typography from '@mui/material/Typography';
 
 export default function DummyCard() {
   
+
+
   return (
     <Card className='card'>
       <CardMedia
-        sx={{ height: 140 }}
-        image="/static/images/cards/contemplative-reptile.jpg"
+        sx={{ height: 200, backgroundColor: 'grey', }}
+        image=''
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
