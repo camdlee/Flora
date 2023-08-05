@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 
 export default function Home() {
-    console.log('home page')
+    // console.log('home page')
     // --------------- Initializing variables ----------
     const apiUrl = `https://perenual.com/api/species-list?page=1&key=sk-NXut64b9f2491050e1633`
     const [plants, setPlants] = useState([])

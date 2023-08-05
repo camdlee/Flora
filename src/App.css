@@ -123,7 +123,7 @@ Nav{
 }
 
 .searchbar{
-  width: 75vw;
+  width: 80vw;
 }
 
 .results-container{
@@ -142,11 +142,11 @@ Nav{
 }
 
 .card{
-  height: 50vh;
+  height: 40vh;
   width: 40vh;
   min-Width: 200px;
   margin: 5px;
-  border: solid gray 1px;
+  border: solid lightgray 1px;
   border-radius: 0;
 }
 
