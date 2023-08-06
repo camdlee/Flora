@@ -6,7 +6,8 @@ import NavbarScroll from './components/Nav';
 import SignUp from './views/SignUp';
 import SignIn from './views/SignIn';
 import PlantData from './views/PlantData';
-import PlantSearch from './views/PlantSearch'
+import PlantSearch from './views/PlantSearch';
+import SpeciesPage from './views/SpeciesPage';
 
 export default function App() {
 
@@ -19,6 +20,7 @@ export default function App() {
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/plantdata' element={<PlantData/>}/>
         <Route path='/plantsearch' element={<PlantSearch/>}/>
+        <Route path='/speciespage' element={<SpeciesPage/>}/>
       </Routes>
     </BrowserRouter>
   )

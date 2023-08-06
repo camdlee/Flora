@@ -142,7 +142,7 @@ Nav{
 }
 
 .card{
-  height: 40vh;
+  height: 50vh;
   width: 40vh;
   min-Width: 200px;
   margin: 5px;
@@ -150,3 +150,6 @@ Nav{
   border-radius: 0;
 }
 
+.card-link{
+  text-decoration: none;
+}
