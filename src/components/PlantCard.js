@@ -11,9 +11,13 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function PlantCard({key, name, other_name, cycle, image, scientific_name, sunlight, watering}) {
+export default function PlantCard({id, name, other_name, cycle, image, scientific_name, sunlight, watering}) {
   
-  const plantId = {key}
+  // console.log(id)
+  const plantId = id
+  // console.log(plantId);
+
+
   // Plant Details url - produces the specific info for a particular plant
   // Need ID and Key for url to get info
   // const plantDetailsUrl=`https://perenual.com/api/species/details/1?key=sk-NXut64b9f2491050e1633`  
@@ -21,15 +25,15 @@ export default function PlantCard({key, name, other_name, cycle, image, scientif
   // Conditional if any info = "Upgrade Plans To Premium/Supreme - https://perenual.com/subscription-api-pricing. I'm sorry"
   let cycleMessage = cycle;
   if (cycle === "Upgrade Plans To Premium/Supreme - https://perenual.com/subscription-api-pricing. I'm sorry"){
-    cycleMessage = 'Info not available'
+    cycleMessage = 'N/A'
   }
   let sunlightMessage = sunlight;
   if (sunlight === "Upgrade Plans To Premium/Supreme - https://perenual.com/subscription-api-pricing. I'm sorry"){
-    sunlightMessage = 'Info not available'
+    sunlightMessage = 'N/A'
   }
   let wateringMessage = watering;
   if (watering === "Upgrade Plans To Premium/Supreme - https://perenual.com/subscription-api-pricing. I'm sorry"){
-    wateringMessage = 'Info not available'
+    wateringMessage = 'N/A'
   }
   
   // want to click the each card which will link to the specific specicies page for that plant
@@ -39,8 +43,7 @@ export default function PlantCard({key, name, other_name, cycle, image, scientif
   return (
     <Link 
       className="card-link"
-      to='/speciespage'
-      key= {plantId}
+      to={`/speciespage/${plantId}`}
     >
       <Card className='card'>
         {/* <CardActionArea

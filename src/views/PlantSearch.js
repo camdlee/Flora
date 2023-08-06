@@ -34,7 +34,8 @@ export default function PlantData() {
         fetch(`https://perenual.com/api/species-list?page=1&key=sk-NXut64b9f2491050e1633&q=${searchedPlant}`)
         .then(response => response.json())
         .then(data=>{
-            console.log(data)
+            console.log(data.data)
+            console.log(data.data[0]["id"])
             setSearchResults(data.data)
         })
     },[searchedPlant])
@@ -45,6 +46,8 @@ export default function PlantData() {
             setSearchedPlant(event.target.value)
         }
     }
+
+    // '?.' is the Optional Chaining Operator. Allows you to safely access nested properties of an object without causing an error if any of the intermediate properties are null or undefined
 
     return(
         <>
@@ -72,7 +75,7 @@ export default function PlantData() {
                 {searchResults.map(plant => {
                     return(
                         <PlantCard
-                        key={plant.id}
+                        id={plant.id}
                         name={plant.common_name}
                         other_name={plant.other_name}
                         image={plant.default_image?.regular_url}

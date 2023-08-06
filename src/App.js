@@ -11,6 +11,7 @@ import SpeciesPage from './views/SpeciesPage';
 
 export default function App() {
 
+  
   return(
     <BrowserRouter>
       <NavbarScroll/>
@@ -20,7 +21,7 @@ export default function App() {
         <Route path='/signin' element={<SignIn/>}/>
         <Route path='/plantdata' element={<PlantData/>}/>
         <Route path='/plantsearch' element={<PlantSearch/>}/>
-        <Route path='/speciespage' element={<SpeciesPage/>}/>
+        <Route path='/speciespage/:id' component={SpeciesPage}/>
       </Routes>
     </BrowserRouter>
   )
