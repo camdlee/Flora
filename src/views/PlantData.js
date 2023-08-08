@@ -55,21 +55,6 @@ export default function PlantData() {
                 <h1>This is the plant data page</h1>
             </div>
 
-            {/* Mapping out plant list data raw */}
-            {/* <div>
-                {plantData.map(plant => {
-                    return <pre>{JSON.stringify(plant)}</pre>
-                })}
-            </div> */}
-
-            {/* <div>
-                {plantInfo.map(plant => {
-                    return <pre>{JSON.stringify(plantInfo)}</pre>
-                })}
-            </div> */}
-
-
-
             {/* ------------------- Plant Card Section ----------------------- */}
             <div>
                 {plantData.map(plant => {

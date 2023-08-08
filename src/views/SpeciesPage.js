@@ -209,43 +209,50 @@ export default function SpeciesPage(){
    }
     return(
         <>
-            <header>
-                {/* <img
-                    src={plantData.default_image.original_url}
-                /> */}
+            <header className="species-header">
                 <h1>
-                    Species: {plantData.common_name}
+                    {plantData.common_name}
                 </h1>
             </header>
-            <body>
-                <p>
-                    Description: {plantData.description}
-                </p>
-                <p>
-                    Cycle: {plantData.cycle}
-                </p>
-                <p>
-                    Watering: {plantData.watering}
-                </p>
-                <p>
-                    Soil: {plantData.soil}
-                </p>
-                <p>
-                    Propogation: {(plantData.propagation).map(propagate =>{
-                        return(
-                            propagate + ' | '
-                        )
-                    })}
-                </p>
-                <p>
-                    Sun: {(plantData.sunlight).map(sunlight =>{
-                        return(
-                            sunlight + ' | '
-                        )
-                    })}
-                </p>
-            </body>
+            <body className="grid-even-columns">
+                    <aside className='species-image-container'>
+                        <img
+                            src={plantData.default_image.original_url}
+                        />
+                    </aside>
+                    <section>
+                        <h5>
+                            Description: 
+                        </h5>
+                        <p>
+                            {plantData.description}
+                        </p>
+                        <p>
+                            Cycle: {plantData.cycle}
+                        </p>
+                        <p>
+                            Watering: {plantData.watering}
+                        </p>
+                        <p>
+                            Soil: {plantData.soil}
+                        </p>
+                        <p>
+                            Propogation: {(plantData.propagation).map(propagate =>{
+                                return(
+                                    propagate + ' | '
+                                )
+                            })}
+                        </p>
+                        <p>
+                            Sun: {(plantData.sunlight).map(sunlight =>{
+                                return(
+                                    sunlight + ' | '
+                                )
+                            })}
+                        </p>              
 
+                    </section>
+            </body>
         </>
     );
 }
