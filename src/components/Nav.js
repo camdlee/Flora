@@ -21,9 +21,9 @@ export default function NavbarScroll() {
               >
                 <Nav.Link href="/signup">Sign Up</Nav.Link>
                 <Nav.Link href="/signin">Sign In</Nav.Link>
-                <Nav.Link href='/plantdata'>Plant Data</Nav.Link>
+                {/* <Nav.Link href='/plantdata'>Plant Data</Nav.Link> */}
                 <Nav.Link href='/plantsearch'>Plant Search</Nav.Link>
-                <NavDropdown title="Link" className='tertiary-color'id="navbarScrollingDropdown">
+                {/* <NavDropdown title="Link" className='tertiary-color'id="navbarScrollingDropdown">
                   <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action4">
                     Another action
@@ -32,7 +32,7 @@ export default function NavbarScroll() {
                   <NavDropdown.Item href="#action5">
                     Something else here
                   </NavDropdown.Item>
-                </NavDropdown>
+                </NavDropdown> */}
                 {/* <Nav.Link href="#" disabled>
                   Link
                 </Nav.Link> */}

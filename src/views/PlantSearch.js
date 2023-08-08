@@ -2,11 +2,12 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import PlantCard from '../components/PlantCard';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 // import { Button } from 'bootstrap';
 // import Button from '@mui/material/Button'
 // import DummyCard from '../components/DummyCard';
 
-export default function PlantData() {
+export default function PlantSearch() {
 
     // ======================= Initializing variables =====================
     // Hooks
@@ -74,16 +75,18 @@ export default function PlantData() {
             <section className='results-container'>
                 {searchResults.map(plant => {
                     return(
-                        <PlantCard
-                        id={plant.id}
-                        name={plant.common_name}
-                        other_name={plant.other_name}
-                        image={plant.default_image?.regular_url}
-                        scientific_name={plant.scientific_name}
-                        cycle={plant.cycle}
-                        sunlight={plant.sunlight}
-                        watering={plant.watering}
-                        />
+                        <Link key={plant.id} to={`/species/${plant.id}`} className='card-link'>
+                            <PlantCard
+                            id={plant.id}
+                            name={plant.common_name}
+                            other_name={plant.other_name}
+                            image={plant.default_image?.regular_url}
+                            scientific_name={plant.scientific_name}
+                            cycle={plant.cycle}
+                            sunlight={plant.sunlight}
+                            watering={plant.watering}
+                            />
+                        </Link>
                     )
                 })}
             </section>

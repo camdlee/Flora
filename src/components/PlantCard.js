@@ -41,10 +41,10 @@ export default function PlantCard({id, name, other_name, cycle, image, scientifi
 
 
   return (
-    <Link 
-      className="card-link"
-      to={`/speciespage/${plantId}`}
-    >
+    // <Link 
+    //   className="card-link"
+    //   to={`/speciespage`}
+    // >
       <Card className='card'>
         {/* <CardActionArea
           to="/speciespage"
@@ -87,6 +87,6 @@ export default function PlantCard({id, name, other_name, cycle, image, scientifi
         {/* </CardActionArea> */}
       </Card>
     
-    </Link>
+    // </Link>
   );
 }
