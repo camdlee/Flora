@@ -220,7 +220,7 @@ export default function SpeciesPage(){
                             src={plantData.default_image.original_url}
                         />
                     </aside>
-                    <section>
+                    <section className='species-info-container'>
                         <h5>
                             Description: 
                         </h5>
