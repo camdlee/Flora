@@ -99,15 +99,35 @@ button{
   flex-direction: row;
   justify-content: center;
 }
-
+.primary-color{
+  background-color: #fefae0;
+}
+.secondary-color{
+  background-color: #e9edc9;
+}
 .tertiary-color{
   background-color: #F2debb;
+}
+.white{
+  background-color: white;
 }
 
 
 /* -------------- Nav ------------ */
 Nav{
   font-weight: bold;
+}
+
+/* ----------------AUTHENTICATION------------------ */
+.signup-page{
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding-top: 5%;
+}
+.authentication-container{
+  border-radius: 5px;
+  padding: 3% 0 3%;
 }
 
 
@@ -175,9 +195,9 @@ Nav{
   width: auto;
   height: auto;
 }
-.species-info-container{
+/* .species-info-container{
   background-color: ;
-}
+} */
 
 .grid-even-columns{
   display: grid;

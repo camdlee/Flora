@@ -5,8 +5,27 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { auth } from '../firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useState, useEffect } from 'react';
+import AuthState from './AuthState';
 
 export default function NavbarScroll() {
+
+    const [authUser, setAuthUser] = useState('')
+
+    useEffect(() => {
+      onAuthStateChanged(auth, (user) => {
+          if (user) {
+              setAuthUser(user)
+              // console.log(user)
+              const uid = user.uid;
+              // ...
+          } else {
+            setAuthUser('')
+          }  
+      }, [authUser])
+    })
 
     return (
         <Navbar expand="lg" className="tertiary-color">
@@ -19,10 +38,19 @@ export default function NavbarScroll() {
                 style={{ maxHeight: '100px' }}
                 navbarScroll
               >
-                <Nav.Link href="/signup">Sign Up</Nav.Link>
-                <Nav.Link href="/signin">Sign In</Nav.Link>
-                {/* <Nav.Link href='/plantdata'>Plant Data</Nav.Link> */}
                 <Nav.Link href='/plantsearch'>Plant Search</Nav.Link>
+                { authUser? 
+                  <div>
+                    <AuthState/>
+                  </div>              
+                : 
+                  <>
+                    <Nav.Link href="/signup">Sign Up</Nav.Link>
+                    <Nav.Link href="/signin">Sign In</Nav.Link>              
+                  </>
+                }
+                {/* <Nav.Link href='/plantdata'>Plant Data</Nav.Link> */}
+                
                 {/* <NavDropdown title="Link" className='tertiary-color'id="navbarScrollingDropdown">
                   <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action4">
