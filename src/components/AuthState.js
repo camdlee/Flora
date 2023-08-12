@@ -16,7 +16,7 @@ export default function AuthState() {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setAuthUser(user)
-                console.log(user)
+                // console.log(user)
                 const uid = user.uid;
                 // ...
             } else {

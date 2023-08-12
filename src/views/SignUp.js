@@ -32,56 +32,55 @@ export default function SignUp() {
   const [user, setUser] = useState({})
   const navigate = useNavigate()
 
-  // ------------ Function to track input from user -------------
+
+  // ------------ Function to create user from data input in form -------------
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      firstName: data.get('firstName'),
-      lastName: data.get('lastName'),
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-    navigate('/')
-  };
+    // console.log({
+    //   firstName: data.get('firstName'),
+    //   lastName: data.get('lastName'),
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
 
-  // console.log(email);
-
-  // ------------ Function to sign up new users -------------
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // signed in
+    try{
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      console.log(user)
-      updateProfile(user, {
+      
+      await updateProfile(user,{
         displayName: firstName,
-      })
-
-      const data = {
+        }
+      );
+      
+      const userData = {
         uid: user.uid,
         email: user.email,
       }
-      console.log(data)
-      setUser(data)
-    })
-    .catch((error) => {
+
+      setUser(user)
+      // navigate('/')
+    } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-    })
-
+      console.error(errorCode, errorMessage)
+    };
+};
   
-  // ---------- useEffect hook to mount to page --------------
+  // ---------- useEffect hook to add user to firebase docs --------------
   useEffect(() => {
     // function to upload user to firebase
     const addUserToFirebase = async () => {
-      console.log(user)
+      // console.log(user)
       await setDoc(doc(db,'user', user.uid), {
         uid: user.uid,
         email: user.email
       })
     }
+
     if(Object.keys(user).length > 0) {
       addUserToFirebase()
+      navigate('/')
     }
   }, [user])
 

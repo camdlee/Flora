@@ -26,20 +26,22 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate()
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    // console.log({
+    //   email, password
+    // });
+
+    // const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    // console.log(userCredential)
 
     //function to sign in email and password inputs
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log(user)
+        // console.log(user)
         
         // redirect to home page
         navigate('/')
@@ -47,10 +49,7 @@ export default function SignIn() {
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log({
-            errorCode: errorCode,
-            errorMessage: errorMessage
-        })
+        console.error(errorCode, errorMessage)
     });
   };
 
