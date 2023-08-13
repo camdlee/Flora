@@ -8,6 +8,7 @@ import SignIn from './views/SignIn';
 import PlantData from './views/PlantData';
 import PlantSearch from './views/PlantSearch';
 import SpeciesPage from './views/SpeciesPage';
+import UserProfile from './views/UserProfile';
 
 export default function App() {
 
@@ -22,6 +23,7 @@ export default function App() {
         <Route path='/plantdata' element={<PlantData/>}/>
         <Route path='/plantsearch' element={<PlantSearch/>}/>
         <Route path='/species/:plantId' element={<SpeciesPage/>}/>
+        <Route path='/user/:userId' element={<UserProfile/>}/>
       </Routes>
     </BrowserRouter>
   )

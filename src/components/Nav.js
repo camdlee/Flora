@@ -9,6 +9,8 @@ import { auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useState, useEffect } from 'react';
 import AuthState from './AuthState';
+import { userNavigate, useParams } from 'react-router-dom';
+
 
 export default function NavbarScroll() {
 
@@ -41,6 +43,7 @@ export default function NavbarScroll() {
                 <Nav.Link href='/plantsearch'>Plant Search</Nav.Link>
                 { authUser? 
                   <div>
+                    <Nav.Link href='/user/:userId'>Profile</Nav.Link>
                     <AuthState/>
                   </div>              
                 : 

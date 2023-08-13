@@ -16,7 +16,10 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import { Snackbar } from '@mui/material';
+import { updateProfile } from 'firebase/auth';
 
 const defaultTheme = createTheme();
 
@@ -24,7 +27,9 @@ export default function SignIn() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showLoginAlert, setShowLoginAlert] = useState(false);
   const navigate = useNavigate()
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,18 +38,22 @@ export default function SignIn() {
     //   email, password
     // });
 
-    // const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    // console.log(userCredential)
-
     //function to sign in email and password inputs
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        const userId = user.uid
+        setShowLoginAlert(true)
+        console.log(showLoginAlert)
+
         // console.log(user)
         
         // redirect to home page
-        navigate('/')
+        // navigate('/')
+
+        // redirect to profile page
+        navigate('/user/${userId}')
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -123,6 +132,18 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
+        <Snackbar
+          open={showLoginAlert}
+          autoHideDuration={6000}
+          onClose={() => setShowLoginAlert(false)}
+        >
+          <Alert
+            onClose={() => setShowLoginAlert(false)}
+            severity='success'
+          >
+            Signed In Successfully!
+          </Alert>
+        </Snackbar>
         {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
       </Container>
     </ThemeProvider>

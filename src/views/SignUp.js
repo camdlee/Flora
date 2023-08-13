@@ -17,6 +17,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { capitalize } from '../utils/formatter';
 
 
 
@@ -49,7 +50,7 @@ export default function SignUp() {
       const user = userCredential.user;
       
       await updateProfile(user,{
-        displayName: firstName,
+        displayName: capitalize(firstName),
         }
       );
       
@@ -80,7 +81,7 @@ export default function SignUp() {
 
     if(Object.keys(user).length > 0) {
       addUserToFirebase()
-      navigate('/')
+      navigate('/user/${userId}')
     }
   }, [user])
 
