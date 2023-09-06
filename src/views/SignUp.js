@@ -89,8 +89,8 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <body className='signup-page primary-color'>
-        <Container component="main" maxWidth="xs" className='authentication-container tertiary-color'>
+      <body className='signup-page'>
+        <Container component="main" maxWidth="xs" className='authentication-container'>
           <CssBaseline />
           <Box
             sx={{

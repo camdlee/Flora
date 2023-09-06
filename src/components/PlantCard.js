@@ -64,7 +64,7 @@ export default function PlantCard({id, name, other_name, cycle, image, scientifi
             <Typography gutterBottom variant="h5" component="div" className='promo-font'>
               {name}
             </Typography>
-            <Typography gutterBottom variant="body" component="div">
+            <Typography gutterBottom variant="body" component="div" className="promo-normal">
               {scientific_name}
             </Typography>
             {/* <Typography gutterBottom variant="h6" component="div">

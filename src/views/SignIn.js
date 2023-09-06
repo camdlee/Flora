@@ -66,12 +66,12 @@ export default function SignIn() {
   
 
   return (
+    <body className='signup-page'>
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" className='authentication-container'>
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -147,5 +147,6 @@ export default function SignIn() {
         {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
       </Container>
     </ThemeProvider>
+    </body>
   );
 }

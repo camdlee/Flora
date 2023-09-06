@@ -176,6 +176,8 @@ Nav{
 .authentication-container{
   border-radius: 5px;
   padding: 3% 0 3%;
+  border: solid lightgray 1px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 
