@@ -81,7 +81,8 @@ export default function SignUp() {
 
     if(Object.keys(user).length > 0) {
       addUserToFirebase()
-      navigate('/user/${userId}')
+      // navigate('/user/${userId}')
+      navigate('/')
     }
   }, [user])
 

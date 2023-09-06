@@ -4,6 +4,8 @@ import { auth } from '../firebase';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 
 // ========================== FUNCTION ========================
@@ -39,10 +41,7 @@ export default function AuthState() {
   return (
     <div>
       { authUser ? 
-        <>
-          {/* <p>Hello, {authUser.displayName}</p> */}
-          <Button varient='outlined' color='error' onClick={handleSignOut} className="fancy-link">Sign Out</Button>
-        </> 
+          <Nav.Link onClick={handleSignOut} className="nav-white-font">Sign Out</Nav.Link>
         : 
           <p></p>  
       }

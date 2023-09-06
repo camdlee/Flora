@@ -24,9 +24,11 @@ export default function SpeciesPage(){
    if(!plantData){
     return(
         <>
-            <h1>
-                Loading...
-            </h1>
+            <div class="loader">
+            <span class="loader__element"></span>
+            <span class="loader__element"></span>
+            <span class="loader__element"></span>
+            </div>
         </>
     )
    }

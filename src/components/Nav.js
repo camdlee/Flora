@@ -42,10 +42,10 @@ export default function NavbarScroll() {
               >
                 <Nav.Link href='/plantsearch' className="nav-white-font">Plant Search</Nav.Link>
                 { authUser? 
-                  <div>
+                  <>
                     <Nav.Link href='/user/:userId' className="nav-white-font">Profile</Nav.Link>
                     <AuthState/>
-                  </div>              
+                  </>              
                 : 
                   <>
                     <Nav.Link href="/signup" className="nav-white-font">Sign Up</Nav.Link>

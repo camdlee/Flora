@@ -53,7 +53,8 @@ export default function SignIn() {
         // navigate('/')
 
         // redirect to profile page
-        navigate('/user/${userId}')
+        // navigate('/user/${userId}')
+        navigate('/')
     })
     .catch((error) => {
         const errorCode = error.code;
