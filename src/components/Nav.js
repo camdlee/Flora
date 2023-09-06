@@ -30,9 +30,9 @@ export default function NavbarScroll() {
     })
 
     return (
-        <Navbar expand="lg" className="tertiary-color">
+        <Navbar expand="lg" className="green">
           <Container fluid>
-            <Navbar.Brand href="/">Home</Navbar.Brand>
+            <Navbar.Brand href="/" className="nav-white-font">Home</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
@@ -40,16 +40,16 @@ export default function NavbarScroll() {
                 style={{ maxHeight: '100px' }}
                 navbarScroll
               >
-                <Nav.Link href='/plantsearch'>Plant Search</Nav.Link>
+                <Nav.Link href='/plantsearch' className="nav-white-font">Plant Search</Nav.Link>
                 { authUser? 
                   <div>
-                    <Nav.Link href='/user/:userId'>Profile</Nav.Link>
+                    <Nav.Link href='/user/:userId' className="nav-white-font">Profile</Nav.Link>
                     <AuthState/>
                   </div>              
                 : 
                   <>
-                    <Nav.Link href="/signup">Sign Up</Nav.Link>
-                    <Nav.Link href="/signin">Sign In</Nav.Link>              
+                    <Nav.Link href="/signup" className="nav-white-font">Sign Up</Nav.Link>
+                    <Nav.Link href="/signin" className="nav-white-font">Sign In</Nav.Link>              
                   </>
                 }
                 {/* <Nav.Link href='/plantdata'>Plant Data</Nav.Link> */}

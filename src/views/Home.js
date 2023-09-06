@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-
+import floraLogo from '../static/icons/flora_logo_green.png'
+import PlantSearch from './PlantSearch';
 
 export default function Home() {
     // console.log('home page')
@@ -26,8 +27,12 @@ export default function Home() {
 
     return(
         <>
-        <body>
-            <div className='home-container'>
+        <body className='container'>
+            <div className='logo-container'>
+                <img src={floraLogo} alt='Flora Logo'/>
+            </div>
+            <PlantSearch/>
+            {/* <div className='home-container'>
                 <h1>This is the home page</h1>
             </div>
             <div className='container'>
@@ -47,7 +52,7 @@ export default function Home() {
             </div>
             <div className='container3'>
                 <h1>Contrast Color</h1>
-            </div>
+            </div> */}
         </body>
         </>
     )

@@ -47,7 +47,7 @@ export default function SpeciesPage(){
                         <h5>
                             Description: 
                         </h5>
-                        <p>
+                        <p className='promo-normal'>
                             {plantData.description}
                         </p>
                         <p>

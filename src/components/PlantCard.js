@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { capitalize } from '../utils/formatter';
 
 
 
@@ -35,7 +36,7 @@ export default function PlantCard({id, name, other_name, cycle, image, scientifi
   if (watering === "Upgrade Plans To Premium/Supreme - https://perenual.com/subscription-api-pricing. I'm sorry"){
     wateringMessage = 'N/A'
   }
-  
+
   // want to click the each card which will link to the specific specicies page for that plant
   // the card needs an href link to the specicies page and pass on information by proprs drilling
 
@@ -60,7 +61,7 @@ export default function PlantCard({id, name, other_name, cycle, image, scientifi
 
           {/* Card Text */}
           <CardContent sx={{ height: 200 }}>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h5" component="div" className='promo-font'>
               {name}
             </Typography>
             <Typography gutterBottom variant="body" component="div">

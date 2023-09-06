@@ -1,6 +1,20 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: promo;
+}
+
+@font-face {
+  font-family: promo;
+  src: url(./static/fonts/PromoTest-Regular-BF63b7880272a33.otf);
+}
+@font-face {
+  font-family: promo-medium;
+  src: url(./static/fonts/PromoTest-Medium-BF63b78802b0fd1.otf);
+}
+@font-face {
+  font-family: promo-normal;
+  src: url(./static/fonts/PromoTest-Normal-BF63b78802deb68.otf);
 }
 
 .App {
@@ -45,7 +59,7 @@
 
 body{
   height: 100vh;
-  background-color: #fefae0;
+  /* background-color: #fefae0; */
 }
 
 button{
@@ -53,48 +67,66 @@ button{
   /* height: 50px; */
 }
 
+
+.promo-font{
+  font-family: promo;
+}
+.promo-normal{
+  font-family: promo-normal;
+}
+.logo-container{
+  margin: 3rem;
+  width: 30rem;
+  height: auto;
+}
+
+.logo-container img{
+  width: 100%;
+  height: auto;
+}
+
 .home-container{
-  background-color: #fefae0;
+  /* background-color: #fefae0; */
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 .container{
-  background-color: #faedcd;
+  /* background-color: #faedcd; */
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
-  margin: 0 0;
-  padding: 0;
+  /* margin: 0 0; */
+  /* padding: 0; */
 }
 .container1{
-  background-color: #e9edc9;
+  /* background-color: #e9edc9; */
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 .container2{
-  background-color: #ccd5ae;
+  /* background-color: #ccd5ae; */
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 .container3{
-  background-color: #D4a373;
+  /* background-color: #D4a373; */
   display: flex;
   flex-direction: row;
   justify-content: center;
   color: white;
 }
 .container4{
-  background-color: #F2debb;
+  /* background-color: #F2debb; */
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 .container5{
-  background-color: #bdc79e;
+  /* background-color: #bdc79e; */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -111,11 +143,27 @@ button{
 .white{
   background-color: white;
 }
-
+.white-text{
+  color: white;
+}
+.off-white{
+  background-color: hsl(0, 0%, 95%);
+}
+.green{
+  background-color: #79d9af;
+  color: #79d9af;
+}
+.green-text{
+  color: #79d9af;
+}
 
 /* -------------- Nav ------------ */
 Nav{
   font-weight: bold;
+}
+.nav-white-font{
+  font-family: promo-medium;
+  color: white;
 }
 
 /* ----------------AUTHENTICATION------------------ */
