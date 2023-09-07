@@ -1,10 +1,65 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+// import { auth } from '../firebase';
+// import { updateProfile } from 'firebase/auth';
 // import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
-
 
 
 export default function ProfileCard({id, displayName}) {
 
+    const [ edit, setEdit ] = useState(false)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [user, setUser] = useState({})
+    const navigate = useNavigate()
+
+
+    //---------- Edit Button function -------------
+    const handleEdit = (event) => {
+        // console.log('Clicked')
+
+        if(edit === false){
+            // console.log('Clicked')
+            setEdit(true)
+            // setEdit(event.target.value)
+        } else{
+            // console.log('Clicked Again')
+            setEdit(false)
+        }
+    }
+
+    // console.log(typeof({displayName}))
+    // console.log({displayName})
+    // console.log({displayName}['displayName'])
+    // const capitalName = {displayName}['displayName'].charAt(0).toUpperCase() + {displayName}['displayName'].slice(1)
+    // console.log(capitalName)
+
+    //----------- Getting Data for User --------------
+    // const user = auth.currentUser;
+    // if(user !== null){
+    //     user.providerData.forEach((profile) => {
+    //         console.log("Sign-in provider: " + profile.providerId);
+    //         console.log("  Provider-specific UID: " + profile.uid);
+    //         console.log("  Name: " + profile.displayName);
+    //         console.log("  Email: " + profile.email);
+    //         console.log("  Photo URL: " + profile.photoURL);
+    //       });
+    // }
+
+    //------------- Updating User Profile -------------------
+    // updateProfile(auth.currentUser, {
+    //     displayName: 'Cameron',
+    //     photoURL: '',
+    // }).then(() => {
+    //     // Profile Updated
+    // }).catch((error) => {
+    //     // An error occurred
+    // });
 
 
   return (
@@ -14,18 +69,42 @@ export default function ProfileCard({id, displayName}) {
             <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col col-lg-9 col-xl-7">
                 <div className="card">
-                <div className="rounded-top text-white d-flex flex-row" style={{backgroundColor: '#000', height: 200}}>
-                    <div className="ms-4 mt-5 d-flex flex-column" style={{width: 150}}>
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp" alt="Generic placeholder image" className="img-fluid img-thumbnail mt-4 mb-2" style={{width: 150, zIndex: 1}} />
-                    <button type="button" className="btn btn-outline-dark" data-mdb-ripple-color="dark" style={{zIndex: 1}}>
-                        Edit profile
-                    </button>
+                    <div className="rounded-top text-white d-flex flex-row" style={{backgroundColor: '#000', height: 200}}>
+                        <div className="ms-4 mt-5 d-flex flex-column" style={{width: 150}}>
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp" alt="Generic placeholder image" className="img-fluid img-thumbnail mt-4 mb-2" style={{width: 150, zIndex: 1}} />
+                            { edit? 
+                            <>
+                                <Button onClick={handleEdit} className="btn btn-outline-dark" style={{zIndex: 1}}>
+                                    Submit
+                                </Button>
+                            </>
+                            :
+                            <>
+                                <Button onClick={handleEdit} className="btn btn-outline-dark" style={{zIndex: 1}}>
+                                    Edit profile
+                                </Button>
+                            </>
+                            }
+                            
+                            {/* <Button onClick={handleEdit} className="btn btn-outline-dark" style={{zIndex: 1}}>
+                                Edit profile
+                            </Button> */}
+                        </div>
+                        <div className="ms-3" style={{marginTop: 130}}>
+                            <h5>{displayName}</h5>
+                            {/* <TextField
+                                autoComplete="given-name"
+                                name="firstName"
+                                required
+                                fullWidth
+                                id="firstName"
+                                label="First Name"
+                                autoFocus
+                                onChange={(event)=> {setFirstName(event.target.value)}}
+                            /> */}
+                            <p>New York</p>
+                        </div>
                     </div>
-                    <div className="ms-3" style={{marginTop: 130}}>
-                    <h5>{displayName}</h5>
-                    <p>New York</p>
-                    </div>
-                </div>
                 <div className="p-4 text-black" style={{backgroundColor: '#f8f9fa'}}>
                     <div className="d-flex justify-content-end text-center py-1">
                     <div>

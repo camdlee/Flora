@@ -1,3 +1,5 @@
+import React from 'react';
+
 // FUNCTIONS TO HELP FORMAT TEXT
 
 

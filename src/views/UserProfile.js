@@ -10,13 +10,14 @@ export default function UserProfile() {
 
     // const { userId } = useParams();
     const [authUser, setAuthUser] = useState('')
+    const [editProfile, setEditProfile] =useState(false)
 
   // ---------------------------------useEffect hook to authenticate users-----------------------------------
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
         if (user) {
             setAuthUser(user)
-            console.log(user)
+            // console.log(user)
             const uid = user.uid;
             // ...
         } else {
