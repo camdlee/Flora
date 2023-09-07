@@ -30,13 +30,13 @@ export default function NavbarScroll() {
     })
 
     return (
-        <Navbar expand="lg" className="green">
+        <Navbar expand="lg" className="flora-green">
           <Container fluid>
             <Navbar.Brand href="/" className="nav-white-font">Home</Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbarScroll" />
-            <Navbar.Collapse id="navbarScroll">
+            <Navbar.Toggle aria-controls="navbarScroll" className="nav-white-font"/>
+            <Navbar.Collapse id="navbarScroll" className="nav-white-font">
               <Nav
-                className="me-auto my-2 my-lg-0"
+                className="me-auto my-2 my-lg-0 nav-white-font"
                 style={{ maxHeight: '100px' }}
                 navbarScroll
               >

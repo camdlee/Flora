@@ -27,7 +27,7 @@ export default function Home() {
 
     return(
         <>
-        <body className='container'>
+        <body className='home-container'>
             <div className='logo-container'>
                 <img src={floraLogo} alt='Flora Logo'/>
             </div>

@@ -60,13 +60,14 @@ export default function PlantSearch() {
             {/* ------------------ INPUT SEARCH BAR ----------------- */}
             <section className="search-header">
                 <h2>Plant Finder</h2>
-                <Form.Control 
-                type="text" 
-                placeholder="Search for a Plant"
-                id='search-bar'
-                className='searchbar'
-                onKeyPress = {handleKeyPress}
-                />
+                <div className='searchbar-container'>
+                    <Form.Control 
+                        type="text" 
+                        placeholder="Search for a Plant"
+                        id='search-bar'
+                        onKeyPress = {handleKeyPress}
+                    />
+                </div>
             {/* <button>Search</button> */}
             </section>
 

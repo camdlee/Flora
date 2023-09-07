@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { userParams } from 'react-router-dom';
 import { auth } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import ProfileCard from '../components/ProfileCard';
 
 
 export default function UserProfile() {
@@ -23,16 +24,18 @@ export default function UserProfile() {
         }  
       }, [authUser])
       })
-
-    
-
+   
+      console.log(authUser)
 
 return(
     <>
-        <h1>This is {authUser.displayName}'s profile page</h1>
-        <h2></h2>
         <main>
-
+        {/* <h1>This is {authUser.displayName}'s profile page</h1> */}
+        <h2></h2>
+          <ProfileCard
+            id={authUser.uid}
+            displayName={authUser.displayName}
+          />
         </main>
     </>
     )    

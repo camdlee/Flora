@@ -46,7 +46,7 @@ export default function PlantCard({id, name, other_name, cycle, image, scientifi
     //   className="card-link"
     //   to={`/speciespage`}
     // >
-      <Card className='card'>
+      <Card className='plant-card'>
         {/* <CardActionArea
           to="/speciespage"
         > */}
