@@ -3,22 +3,39 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-// import { auth } from '../firebase';
+import { auth, updatePassword, } from '../firebase';
+import { getStorage, ref } from "firebase/storage";
 // import { updateProfile } from 'firebase/auth';
 // import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
 
 
-export default function ProfileCard({id, displayName}) {
+export default function ProfileCard() {
 
+    //----------- Getting Data for User --------------
+    const user = auth.currentUser;
+    if(user !== null){
+        // user.providerData.forEach((profile) => {
+        //     console.log("Sign-in provider: " + profile.providerId);
+        //     console.log("  Provider-specific UID: " + profile.uid);
+        //     console.log("  Name: " + profile.displayName);
+        //     console.log("  Email: " + profile.email);
+        //     console.log("  Photo URL: " + profile.photoURL);
+        //   });
+        // console.log(typeof(user.email))
+    }
+
+    // ------------- States ------------------
     const [ edit, setEdit ] = useState(false)
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [user, setUser] = useState({})
-    const navigate = useNavigate()
+    const [email, setEmail] = useState(user.email)
+    // const [password, setPassword] = useState('')
+    const [firstName, setFirstName] = useState(user.displayName)
+    // const [profilePic, setProfilePic] = useState(user.photoURL)
+    // const storage = getStorage();
+    // const profilePic = ref(storage, '');
+    // const [lastName, setLastName] = useState('')
+    // const navigate = useNavigate()
 
-
+    console.log(email)
     //---------- Edit Button function -------------
     const handleEdit = (event) => {
         // console.log('Clicked')
@@ -33,23 +50,25 @@ export default function ProfileCard({id, displayName}) {
         }
     }
 
+    //-------- Function to update Email ------------
+    const updateUserEmail = (event) =>{
+        // updateEmail(auth.currentUser, event.target.value)
+        // .then(() => {
+        //     // Email updated!
+        //     // ...
+        //   })
+        // .catch((error) => {
+        //     // An error occurred
+        //     // ...
+        //   });
+    }
+
     // console.log(typeof({displayName}))
     // console.log({displayName})
     // console.log({displayName}['displayName'])
     // const capitalName = {displayName}['displayName'].charAt(0).toUpperCase() + {displayName}['displayName'].slice(1)
     // console.log(capitalName)
 
-    //----------- Getting Data for User --------------
-    // const user = auth.currentUser;
-    // if(user !== null){
-    //     user.providerData.forEach((profile) => {
-    //         console.log("Sign-in provider: " + profile.providerId);
-    //         console.log("  Provider-specific UID: " + profile.uid);
-    //         console.log("  Name: " + profile.displayName);
-    //         console.log("  Email: " + profile.email);
-    //         console.log("  Photo URL: " + profile.photoURL);
-    //       });
-    // }
 
     //------------- Updating User Profile -------------------
     // updateProfile(auth.currentUser, {
@@ -91,17 +110,14 @@ export default function ProfileCard({id, displayName}) {
                             </Button> */}
                         </div>
                         <div className="ms-3" style={{marginTop: 130}}>
-                            <h5>{displayName}</h5>
-                            {/* <TextField
-                                autoComplete="given-name"
-                                name="firstName"
-                                required
-                                fullWidth
-                                id="firstName"
-                                label="First Name"
-                                autoFocus
-                                onChange={(event)=> {setFirstName(event.target.value)}}
-                            /> */}
+                            { edit? 
+                            <>
+                            </>
+                            :
+                            <>
+                                <h5>{firstName}</h5>
+                            </>
+                            }
                             <p>New York</p>
                         </div>
                     </div>
@@ -123,11 +139,23 @@ export default function ProfileCard({id, displayName}) {
                 </div>
                 <div className="card-body p-4 text-black">
                     <div className="mb-5">
-                    <p className="lead fw-normal mb-1">About</p>
+                    {/* <p className="lead fw-normal mb-1">About</p> */}
                     <div className="p-4" style={{backgroundColor: '#f8f9fa'}}>
-                        <p className="font-italic mb-1">Web Developer</p>
+                        { edit? 
+                            <>
+                                <p className="mb-1">Name: <input></input> </p>
+                                <p className="mb-1">Email: <input></input> </p>
+                            </>
+                            :
+                            <>
+                                <p className="mb-1">Name: <>{firstName}</> </p>
+                                <p className="mb-1">Email: <>{email}</> </p>
+                            </>
+                        }
+                        {/* <p className="mb-1">Password: {email} </p> */}
+                        {/* <p className="font-italic mb-1">Web Developer</p>
                         <p className="font-italic mb-1">Lives in New York</p>
-                        <p className="font-italic mb-0">Photographer</p>
+                        <p className="font-italic mb-0">Photographer</p> */}
                     </div>
                     </div>
                     <div className="d-flex justify-content-between align-items-center mb-4">

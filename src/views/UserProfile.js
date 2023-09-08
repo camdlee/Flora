@@ -10,7 +10,6 @@ export default function UserProfile() {
 
     // const { userId } = useParams();
     const [authUser, setAuthUser] = useState('')
-    const [editProfile, setEditProfile] =useState(false)
 
   // ---------------------------------useEffect hook to authenticate users-----------------------------------
   useEffect(() => {
@@ -26,7 +25,7 @@ export default function UserProfile() {
       }, [authUser])
       })
    
-      console.log(authUser)
+      // console.log(authUser)
 
 return(
     <>
@@ -36,6 +35,8 @@ return(
           <ProfileCard
             id={authUser.uid}
             displayName={authUser.displayName}
+            email={authUser.email}
+            profilePic={authUser.photoURL}
           />
         </main>
     </>
