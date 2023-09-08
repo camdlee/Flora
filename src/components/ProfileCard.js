@@ -5,37 +5,38 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { auth, updatePassword, } from '../firebase';
 import { getStorage, ref } from "firebase/storage";
+import { onAuthStateChanged } from "firebase/auth";
 // import { updateProfile } from 'firebase/auth';
 // import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
 
 
 export default function ProfileCard() {
+    
+    const [authUser, setAuthUser] = useState('')
 
     //----------- Getting Data for User --------------
-    const user = auth.currentUser;
-    if(user !== null){
-        // user.providerData.forEach((profile) => {
-        //     console.log("Sign-in provider: " + profile.providerId);
-        //     console.log("  Provider-specific UID: " + profile.uid);
-        //     console.log("  Name: " + profile.displayName);
-        //     console.log("  Email: " + profile.email);
-        //     console.log("  Photo URL: " + profile.photoURL);
-        //   });
-        // console.log(typeof(user.email))
-    }
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setAuthUser(user)
+            } else {
+              setAuthUser('')
+            }  
+    }, [authUser])
+    })
 
     // ------------- States ------------------
     const [ edit, setEdit ] = useState(false)
-    const [email, setEmail] = useState(user.email)
+    const [email, setEmail] = useState(authUser.email)
     // const [password, setPassword] = useState('')
-    const [firstName, setFirstName] = useState(user.displayName)
+    const [firstName, setFirstName] = useState(authUser.displayName)
     // const [profilePic, setProfilePic] = useState(user.photoURL)
     // const storage = getStorage();
     // const profilePic = ref(storage, '');
     // const [lastName, setLastName] = useState('')
     // const navigate = useNavigate()
 
-    console.log(email)
+    console.log(authUser)
     //---------- Edit Button function -------------
     const handleEdit = (event) => {
         // console.log('Clicked')

@@ -35,8 +35,8 @@ export default function PlantSearch() {
         fetch(`https://perenual.com/api/species-list?page=1&key=sk-NXut64b9f2491050e1633&q=${searchedPlant}`)
         .then(response => response.json())
         .then(data=>{
-            console.log(data.data)
-            console.log(data.data[0]["id"])
+            // console.log(data.data)
+            // console.log(data.data[0]["id"])
             setSearchResults(data.data)
         })
     },[searchedPlant])
