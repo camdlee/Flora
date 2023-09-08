@@ -12,31 +12,33 @@ import { onAuthStateChanged } from "firebase/auth";
 
 export default function ProfileCard() {
     
-    const [authUser, setAuthUser] = useState('')
-
-    //----------- Getting Data for User --------------
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setAuthUser(user)
-            } else {
-              setAuthUser('')
-            }  
-    }, [authUser])
-    })
-
     // ------------- States ------------------
+    const [authUser, setAuthUser] = useState('')
     const [ edit, setEdit ] = useState(false)
-    const [email, setEmail] = useState(authUser.email)
+    const [email, setEmail] = useState('')
     // const [password, setPassword] = useState('')
-    const [firstName, setFirstName] = useState(authUser.displayName)
+    const [firstName, setFirstName] = useState('')
     // const [profilePic, setProfilePic] = useState(user.photoURL)
     // const storage = getStorage();
     // const profilePic = ref(storage, '');
     // const [lastName, setLastName] = useState('')
     // const navigate = useNavigate()
 
-    console.log(authUser)
+
+    //----------- Getting Data for User --------------
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setAuthUser(user)
+                setEmail(user.email)
+                setFirstName(user.displayName)
+            } else {
+              setAuthUser(null)
+            }  
+    }, [authUser])
+    })
+
+
     //---------- Edit Button function -------------
     const handleEdit = (event) => {
         // console.log('Clicked')
@@ -63,12 +65,6 @@ export default function ProfileCard() {
         //     // ...
         //   });
     }
-
-    // console.log(typeof({displayName}))
-    // console.log({displayName})
-    // console.log({displayName}['displayName'])
-    // const capitalName = {displayName}['displayName'].charAt(0).toUpperCase() + {displayName}['displayName'].slice(1)
-    // console.log(capitalName)
 
 
     //------------- Updating User Profile -------------------

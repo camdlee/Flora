@@ -21,29 +21,32 @@ export default function ImageUpload() {
             } else {
               setAuthUser('')
             }  
-    }, [authUser])
-    })
+        }, [authUser])
+    });
     // console.log(authUser)
-    const userId = authUser.uid
+    const userId = authUser.uid;
 
-    const imageUrlsRef = ref(storage, `${userId}/images/`)
+
+    const imageUrlsRef = ref(storage, `${userId}/images/`);
     // console.log(imageUrlsRef)
     // ------------ Function to upload Image ------------
     const uploadImage = () =>{
         if( imageUpload == null ) return;
         // creating a reference for the image 
         // will need to tie this back to the user
-        let imageRef = ref(storage, `${userId}/images/${imageUpload.name}`)
+        let imageRef = ref(storage, `${userId}/images/${imageUpload.name}`);
 
         // 
         uploadBytes(imageRef, imageUpload)
-        .then(()=>{
-            alert('Successfully Uploaded')
+        .then((snapshot)=>{
+            getDownloadURL(snapshot.ref).then((url)=>{
+                setImageUrls((prev) => [...prev, url])
+            })
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.error(errorCode, errorMessage)
+            // console.error(errorCode, errorMessage)
         })
     };
 
@@ -51,18 +54,27 @@ export default function ImageUpload() {
     // ------- useEffect to display images ------------
     // need to tell firebase to get all the images in a specific reference path
     useEffect(()=>{
+        // console.log(imageUrls)
         listAll(imageUrlsRef).then((response)=>{
         //    console.log(response.items);
            response.items.forEach((item) => {
                 getDownloadURL(item).then((url) =>{
-                    console.log(url)
-                    setImageUrls((prev) => [...prev, url])
+                    // console.log(url)
+                     if (imageUrls.includes(url)){
+
+                     } else{
+                        setImageUrls((prev) => [...prev, url])
+                     }
                 })
            })
     })
-    },[])
+    });
 
-    console.log(imageUrlsRef)
+    // console.log(imageUrls);
+    let uniqueImageUrls = Array.from(new Set(imageUrls));
+    // console.log(uniqueImageUrls)
+
+    // console.log(imageUrlsRef);
 
   return (
     <>
@@ -71,9 +83,9 @@ export default function ImageUpload() {
         <button onClick={uploadImage}>Upload Image</button>
 
         {/* Displaying Images from firebase */}
-        {imageUrls.map((url, index) => {
+        {uniqueImageUrls.map((url, index) => {
             return (
-            <img src={url} alt={`Image ${index}`}/>
+            <img key={index} src={url}/>
             )
         })}
     </>
