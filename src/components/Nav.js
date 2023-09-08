@@ -40,10 +40,11 @@ export default function NavbarScroll() {
                 style={{ maxHeight: '100px' }}
                 navbarScroll
               >
-                <Nav.Link href='/plantsearch' className="nav-white-font">Plant Search</Nav.Link>
+                {/* <Nav.Link href='/plantsearch' className="nav-white-font">Plant Search</Nav.Link> */}
                 { authUser? 
                   <>
                     <Nav.Link href='/user/:userId' className="nav-white-font">Profile</Nav.Link>
+                    <Nav.Link href='/myplants' className="nav-white-font">My Plants</Nav.Link>
                     <AuthState/>
                   </>              
                 : 

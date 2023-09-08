@@ -19,15 +19,16 @@ export default function SpeciesPage(){
             setPlantData(data)
         })
     }, [plantId])
+    
 
 
    if(!plantData){
     return(
         <>
             <div class="loader">
-            <span class="loader__element"></span>
-            <span class="loader__element"></span>
-            <span class="loader__element"></span>
+                <span class="loader__element"></span>
+                <span class="loader__element"></span>
+                <span class="loader__element"></span>
             </div>
         </>
     )
@@ -53,27 +54,33 @@ export default function SpeciesPage(){
                             {plantData.description}
                         </p>
                         <p>
-                            Cycle: {plantData.cycle}
+                            Cycle: <span className='promo-normal'>{plantData.cycle}</span>
                         </p>
                         <p>
-                            Watering: {plantData.watering}
+                            Watering: <span className='promo-normal'>{plantData.watering}</span>
                         </p>
                         <p>
-                            Soil: {plantData.soil}
+                            Soil: <span className='promo-normal'>{plantData.soil}</span>
                         </p>
                         <p>
-                            Propogation: {(plantData.propagation).map(propagate =>{
-                                return(
-                                    propagate + ' | '
-                                )
-                            })}
+                            Propogation: 
+                                <span className='promo-normal'>
+                                    {(plantData.propagation).map(propagate =>{
+                                    return(
+                                        propagate + ' | '
+                                    )
+                                })}
+                                </span>
                         </p>
                         <p>
-                            Sun: {(plantData.sunlight).map(sunlight =>{
-                                return(
-                                    sunlight + ' | '
-                                )
-                            })}
+                            Sun: 
+                            <span className='promo-normal'>
+                                {(plantData.sunlight).map(sunlight =>{
+                                    return(
+                                        sunlight + ' | '
+                                    )
+                                })}
+                            </span>
                         </p>              
 
                     </section>

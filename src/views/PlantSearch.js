@@ -73,7 +73,10 @@ export default function PlantSearch() {
 
             {/* ------------------- Plant Card Section ----------------------- */}
 
-            <section className='results-container'>
+            <section 
+                className='results-container'
+                sx={{backgroundColor: '#f8f9fa'}}
+                >
                 {searchResults.map(plant => {
                     return(
                         <Link key={plant.id} to={`/species/${plant.id}`} className='card-link'>
