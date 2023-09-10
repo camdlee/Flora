@@ -56,7 +56,9 @@
   }
 }
 
-
+main{
+  width: 100%;
+}
 body{
   height: 100vh;
   /* background-color: #fefae0; */
@@ -151,7 +153,6 @@ body{
 }
 .flora-green{
   background-color: #79d9af;
-  color: #79d9af;
 }
 .flora-green-text{
   color: #79d9af;

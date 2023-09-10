@@ -20,8 +20,16 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import { Snackbar } from '@mui/material';
 import { updateProfile } from 'firebase/auth';
+// import { green } from '@mui/material/colors';
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  palette: {
+      primary: {
+        main: '#79d9af',
+        contrastText: "#fff"
+    }
+  }
+});
 
 export default function SignIn() {
 

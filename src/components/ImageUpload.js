@@ -79,8 +79,10 @@ export default function ImageUpload() {
   return (
     <>
         <div>ImageUpload</div>
-        <input type='file' onChange={(event)=>{setImageUpload(event.target.files[0])}}/>
-        <button onClick={uploadImage}>Upload Image</button>
+        <div className='home-container'>
+            <input type='file' onChange={(event)=>{setImageUpload(event.target.files[0])}}/>
+            <button onClick={uploadImage}>Upload Image</button>
+        </div>
 
         {/* Displaying Images from firebase */}
         {uniqueImageUrls.map((url, index) => {

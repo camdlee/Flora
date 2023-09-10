@@ -3,6 +3,7 @@ import { useState, useEffect} from 'react';
 import { auth, storage } from '../firebase';
 import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
 import { onAuthStateChanged } from "firebase/auth";
+import MyPlantsAlbum from '../components/MyPlantsAlbum';
 
 export default function MyPlants() {
 
@@ -52,14 +53,15 @@ export default function MyPlants() {
   return (
     <div className='home-container'>
 
-        <div>MyPlants</div>
+        {/* <div>MyPlants</div> */}
 
         {/* Displaying Images from firebase */}
-        {uniqueImageUrls.map((url, index) => {
+        {/* {uniqueImageUrls.map((url, index) => {
             return (
             <img key={index} src={url}/>
             )
-        })}
+        })} */}
+        <MyPlantsAlbum plantImgUrls={uniqueImageUrls}/>
 
     </div>
   )

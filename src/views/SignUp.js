@@ -21,7 +21,14 @@ import { capitalize } from '../utils/formatter';
 
 
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  palette: {
+      primary: {
+        main: '#79d9af',
+        contrastText: "#fff"
+    }
+  }
+});
 
 export default function SignUp() {
 
