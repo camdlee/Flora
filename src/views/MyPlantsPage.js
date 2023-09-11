@@ -2,8 +2,9 @@ import React from 'react';
 import { useState, useEffect} from 'react';
 import { auth, storage } from '../firebase';
 import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage';
-import { onAuthStateChanged } from "firebase/auth";
 import MyPlantsAlbum from '../components/MyPlantsAlbum';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useAuth } from '../utils/customHooks';
 
 export default function MyPlants() {
 

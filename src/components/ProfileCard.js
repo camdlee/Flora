@@ -1,24 +1,31 @@
 import React from 'react';
+import Avatar from '@mui/material/Avatar';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { auth, updatePassword, } from '../firebase';
-import { getStorage, ref } from "firebase/storage";
-import { onAuthStateChanged } from "firebase/auth";
-// import { updateProfile } from 'firebase/auth';
+import { auth, storage, updatePassword, } from '../firebase';
+import { upload, useAuth } from '../utils/customHooks';
+import { getDownloadURL, ref } from "firebase/storage";
+import { updateProfile } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
+import { doc, getDocs } from 'firebase/firestore';
+import pothos from '../static/images/pothos.jpg';
 // import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
 
 
 export default function ProfileCard() {
     
     // ------------- States ------------------
-    const [authUser, setAuthUser] = useState('')
+    const [authUser, setAuthUser] = useState()
     const [ edit, setEdit ] = useState(false)
     const [email, setEmail] = useState('')
+    const [imageUpload, setImageUpload] = useState(null);
     // const [password, setPassword] = useState('')
-    const [firstName, setFirstName] = useState('')
-    // const [profilePic, setProfilePic] = useState(user.photoURL)
+    const [firstName, setFirstName] = useState('');
+    const [profilePic, setProfilePic] = useState();
+    const [photo, setPhoto] = useState(null);
+    const [loading, setLoading] = useState(false);
     // const storage = getStorage();
     // const profilePic = ref(storage, '');
     // const [lastName, setLastName] = useState('')
@@ -32,11 +39,44 @@ export default function ProfileCard() {
                 setAuthUser(user)
                 setEmail(user.email)
                 setFirstName(user.displayName)
+                
             } else {
               setAuthUser(null)
             }  
     }, [authUser])
     })
+
+    const currentUser = useAuth();
+
+    // useEffect(()=>{
+    //     let isMounted = true;
+
+    //     const fetchUserData = async () => {
+    //         const querySnapshot = await getDocs(collection())
+    //         if(currentUser){
+    //             try{
+    //                 //Fetch current user data asynchronously
+    //                 const userSnapshot = await getUserData(currentUser.uid)
+    //             } catch(error){
+    //                 console.error("Error fetching user data", error);
+    //             }
+    //         }
+    //     }
+    //     // if(currentUser){
+    //     //     setProfilePic(currentUser.photoUrl);
+    //     //     setEmail(currentUser.email)
+    //     //     setFirstName(currentUser.displayName)
+    //     //     // console.log(authUser.uid)
+    //     // }
+
+    //     const getUserData = async (uid) =>{
+    //         const userDoc = firestore.collection('users').doc(uid);
+    //         const userSnapshot = await userDoc.get();
+    //         return userSnapshot
+    //     }
+
+    //     fetchUserData();
+    // }, [currentUser])
 
 
     //---------- Edit Button function -------------
@@ -55,7 +95,7 @@ export default function ProfileCard() {
 
     //-------- Function to update Email ------------
     const updateUserEmail = (event) =>{
-        // updateEmail(auth.currentUser, event.target.value)
+        // updateEmail(auth.authUser, event.target.value)
         // .then(() => {
         //     // Email updated!
         //     // ...
@@ -68,7 +108,7 @@ export default function ProfileCard() {
 
 
     //------------- Updating User Profile -------------------
-    // updateProfile(auth.currentUser, {
+    // updateProfile(auth.authUser, {
     //     displayName: 'Cameron',
     //     photoURL: '',
     // }).then(() => {
@@ -77,9 +117,34 @@ export default function ProfileCard() {
     //     // An error occurred
     // });
 
+    // ----- Profile Picture File Reference ----------
+    // const userId = ''
+    // const fileRef = ref(storage, `${userId}/profile-picture/`);    
+    
+
+    // const handleChange = (event) =>{
+    //     if(event.target.files[0]){
+    //         setPhoto(event.target.files[0])
+    //         console.log(photo)
+    //     }
+    // }
+
+    // const handleClick = () =>{
+    //     upload(photo, authUser, fileRef, setLoading);
+
+    //     const profilePicUrl = getDownloadURL(fileRef);
+    //     updateProfile(authUser, {profilePicUrl})
+    // }
+
 
   return (
     <>
+        {/* <div className='home-container'>
+            <input type='file' onChange={handleChange}/>
+            <button disabled={loading || !photo} onClick={handleClick}>Upload</button>
+            <Avatar src={profilePic} sx={{ m: 1, }}></Avatar>
+        </div> */}
+
         <section className="h-100 gradient-custom-2">
         <div className="container py-5 h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
@@ -101,12 +166,8 @@ export default function ProfileCard() {
                                 </Button>
                             </>
                             }
-                            
-                            {/* <Button onClick={handleEdit} className="btn btn-outline-dark" style={{zIndex: 1}}>
-                                Edit profile
-                            </Button> */}
                         </div>
-                        <div className="ms-3" style={{marginTop: 130}}>
+                        {/* <div className="ms-3" style={{marginTop: 130}}>
                             { edit? 
                             <>
                             </>
@@ -116,7 +177,7 @@ export default function ProfileCard() {
                             </>
                             }
                             <p>New York</p>
-                        </div>
+                        </div> */}
                     </div>
                 <div className="p-4 text-black" style={{backgroundColor: '#f8f9fa'}}>
                     <div className="d-flex justify-content-end text-center py-1">
@@ -136,7 +197,7 @@ export default function ProfileCard() {
                 </div>
                 <div className="card-body p-4 text-black">
                     <div className="mb-5">
-                    {/* <p className="lead fw-normal mb-1">About</p> */}
+
                     <div className="p-4" style={{backgroundColor: '#f8f9fa'}}>
                         { edit? 
                             <>
@@ -149,10 +210,6 @@ export default function ProfileCard() {
                                 <p className="mb-1">Email: <>{email}</> </p>
                             </>
                         }
-                        {/* <p className="mb-1">Password: {email} </p> */}
-                        {/* <p className="font-italic mb-1">Web Developer</p>
-                        <p className="font-italic mb-1">Lives in New York</p>
-                        <p className="font-italic mb-0">Photographer</p> */}
                     </div>
                     </div>
                     <div className="d-flex justify-content-between align-items-center mb-4">
@@ -161,18 +218,18 @@ export default function ProfileCard() {
                     </div>
                     <div className="row g-2">
                     <div className="col mb-2">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp" alt="image 1" className="w-100 rounded-3" />
+                        <img src={pothos} alt="image 1" className="w-100 rounded-3" />
                     </div>
                     <div className="col mb-2">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp" alt="image 1" className="w-100 rounded-3" />
+                        <img src={pothos} alt="image 1" className="w-100 rounded-3" />
                     </div>
                     </div>
                     <div className="row g-2">
                     <div className="col">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp" alt="image 1" className="w-100 rounded-3" />
+                        <img src={pothos} alt="image 1" className="w-100 rounded-3" />
                     </div>
                     <div className="col">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp" alt="image 1" className="w-100 rounded-3" />
+                        <img src={pothos} alt="image 1" className="w-100 rounded-3" />
                     </div>
                     </div>
                 </div>

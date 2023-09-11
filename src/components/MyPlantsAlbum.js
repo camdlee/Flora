@@ -68,13 +68,13 @@ export default function MyPlantsAlbum({plantImgUrls}) {
             >
                 My Plants
             </h1>
-            <p
+            {/* <p
                 align='center'
                 color="text.secondary"
                 paragraph
             >
                 Current plants
-            </p>
+            </p> */}
             {/* <Typography align="center" color="text.secondary" paragraph>
               Something short and leading about the collection below—its contents,
               the creator, etc. Make it short and sweet, but not too short so folks
