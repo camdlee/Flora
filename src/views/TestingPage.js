@@ -7,10 +7,10 @@ export default function TestingPage() {
 
     return(
         <>
-        <body className='home-container'>
+        <div className='home-container'>
             <AddPlantForm/>
             <ImageUpload/>
-        </body>
+        </div>
         </>
     )
 }
