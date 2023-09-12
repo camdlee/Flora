@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { capitalize } from '../utils/formatter';
+import floraLogo from '../static/icons/Logo Vector.png';
 
 
 
@@ -36,7 +37,10 @@ export default function PlantCard({id, name, other_name, cycle, image, scientifi
   if (watering === "Upgrade Plans To Premium/Supreme - https://perenual.com/subscription-api-pricing. I'm sorry"){
     wateringMessage = 'N/A'
   }
-
+  let plantImg = image;
+  if(!image){
+    plantImg = floraLogo
+  }
   // want to click the each card which will link to the specific specicies page for that plant
   // the card needs an href link to the specicies page and pass on information by proprs drilling
 
@@ -54,7 +58,7 @@ export default function PlantCard({id, name, other_name, cycle, image, scientifi
           {/* Image for Card */}
           <CardMedia
             sx={{ height: 200 }}
-            image={image}
+            image={plantImg}
             title={name}
             alt='${name} image'
           />

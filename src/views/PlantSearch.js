@@ -79,7 +79,7 @@ export default function PlantSearch() {
                 >
                 {searchResults.map(plant => {
                     return(
-                        <Link key={plant.id} to={`/species/${plant.id}`} className='card-link'>
+                        <Link key={plant.id} to={`/species/${plant.id}`}>
                             <PlantCard
                             id={plant.id}
                             name={plant.common_name}
